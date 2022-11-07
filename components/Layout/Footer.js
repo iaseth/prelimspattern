@@ -10,7 +10,7 @@ export default function Footer ({appdata}) {
 	const yearItems = appdata.app.years.map((y, k) => {
 		return (
 			<Link key={k} className="block bg-slate-700 px-4 py-6 rounded shadow" href={y.href}>
-				<h2>{y.year}</h2>
+				<h4>{y.year}</h4>
 			</Link>
 		);
 	});

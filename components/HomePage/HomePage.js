@@ -1,12 +1,12 @@
 import Head from 'next/head';
 
-import YearSummary from '../YearSummary';
+import Header from '../Header';
 
 
 
 export default function HomePage ({appdata}) {
 	const {app} = appdata;
-	const yearSummaryItems = app.years.map((y, k) => <YearSummary key={k} year={y} />);
+
 	const elevenRows = app.eleven.map((e, k) => {
 		return (
 			<tr key={k}>
@@ -27,6 +27,8 @@ export default function HomePage ({appdata}) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
+			<Header page={app.asYear} />
+
 			<section className="max-w-xl mx-auto">
 				<div className="py-6">
 					<table>
@@ -42,7 +44,6 @@ export default function HomePage ({appdata}) {
 						<tbody>{elevenRows}</tbody>
 					</table>
 				</div>
-				<div>{yearSummaryItems}</div>
 			</section>
 		</div>
 	);

@@ -7,7 +7,9 @@ export default class Year {
 		this.app = app;
 		this.jsonData = jsonData;
 		this.year = jsonData.year;
+		this.path = `${this.year}`;
 		this.href = `${this.year}`;
+
 		this.questions = jsonData.answers.map(q => new Question(this, q));
 		this.questions.forEach((q, index) => {
 			q.index = index;
