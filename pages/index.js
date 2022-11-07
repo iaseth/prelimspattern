@@ -1,6 +1,13 @@
 import Head from 'next/head';
 
-export default function Home() {
+import YearSummary from '../components/YearSummary';
+
+
+
+export default function Home({appdata}) {
+	const {app} = appdata;
+	const yearSummaryItems = app.years.map((y, k) => <YearSummary key={k} year={y} />);
+
 	return (
 		<div>
 			<Head>
@@ -10,9 +17,9 @@ export default function Home() {
 			</Head>
 
 			<main>
-				<h1>
-					Welcome to <a href="https://nextjs.org">Next.js!</a>
-				</h1>
+				<section className="max-w-5xl mx-auto">
+					<div>{yearSummaryItems}</div>
+				</section>
 			</main>
 		</div>
 	);
