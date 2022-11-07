@@ -16,3 +16,19 @@ h3 { @apply text-lg; }
 h4 { @apply text-base; }
 h5 { @apply text-sm; }
 h6 { @apply text-xs; }
+
+table {
+	@apply w-full bg-white shadow font-bold text-sm;
+}
+
+table > thead > tr {
+	@apply bg-zinc-500 text-white;
+}
+
+table tr {
+	@apply even:bg-zinc-100;
+}
+
+table tr td {
+	@apply px-3 py-3;
+}

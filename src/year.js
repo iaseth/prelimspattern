@@ -14,4 +14,11 @@ export default class Year {
 			q.number = index+1;
 		});
 	}
+
+	process () {
+		this.a = this.questions.filter(q => q.answer === 'A');
+		this.b = this.questions.filter(q => q.answer === 'B');
+		this.c = this.questions.filter(q => q.answer === 'C');
+		this.d = this.questions.filter(q => q.answer === 'D');
+	}
 }
