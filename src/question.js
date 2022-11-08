@@ -6,6 +6,7 @@ export default class Question {
 		this.year = year;
 		this.meta = meta;
 		this.answer = this.meta.answer.toUpperCase();
+		this.number = this.meta.number;
 		this.statements = this.meta.statements;
 		this.matching = this.meta.matching;
 		this.simple = (this.statements || this.matching) ? false : true;

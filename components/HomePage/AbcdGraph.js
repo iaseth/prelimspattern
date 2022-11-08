@@ -6,17 +6,13 @@ import Chart from 'chart.js/auto';
 
 export default function AbcdGraph ({
 	app, title="AbcdGraph", min=0, max=40,
-	overall=false,
 	filter = () => true,
-	getLabel, getData
+	getLabel
 }) {
 
 	const canvasElement = React.useRef();
 
-	let years = [...app.years].reverse();
-	if (overall) {
-		years = [...years, app.overall];
-	}
+	const years = [app.overall, ...app.years].reverse();
 
 	const COLORS = {
 		A: '#ee0000',
@@ -29,7 +25,7 @@ export default function AbcdGraph ({
 		const questions = year.questions.filter(q => filter(q));
 		const q2 = questions.filter(q => q.answer === option);
 		return Math.round(q2.length * 100 / questions.length);
-	}
+	};
 
 	const getDataset = (option) => {
 		return {

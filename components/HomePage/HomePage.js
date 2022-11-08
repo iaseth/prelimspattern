@@ -9,18 +9,6 @@ import TenYearBarGraph from './TenYearBarGraph';
 export default function HomePage ({appdata}) {
 	const {app} = appdata;
 
-	const elevenRows = app.eleven.map((e, k) => {
-		return (
-			<tr key={k}>
-				<td>{e.year}</td>
-				<td>{e.nA}</td>
-				<td>{e.nB}</td>
-				<td>{e.nC}</td>
-				<td>{e.nD}</td>
-			</tr>
-		);
-	});
-
 	const abcdProps = {
 		app: app,
 		getLabel: y => y.year,
@@ -42,16 +30,30 @@ export default function HomePage ({appdata}) {
 				<AbcdGraph app={app} getLabel={y => y.year} getData={(y) => y.nA} title="ABCD over the years" />
 
 				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nSimple} title="Number of Simple Questions" max={70} />
-				<AbcdGraph app={app} getLabel={y => y.year} getData={(y) => y.nA} overall={true} filter={q => q.simple} title="Answer distribution for Simple Questions (%)" />
+				<AbcdGraph app={app} getLabel={y => y.year} filter={q => q.simple} title="Answer distribution for Simple Questions (%)" />
 
 				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nS} title="Number of Questions with Statements" max={70} />
-				<AbcdGraph app={app} getLabel={y => y.year} getData={(y) => y.nA} overall={true} filter={q => q.statements} title="Answer distribution for Questions with Statements (%)" />
+				<AbcdGraph app={app} getLabel={y => y.year} filter={q => q.statements} title="Answer distribution for Questions with Statements (%)" />
 
 				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nM} title="Matchings" />
 				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nA} title="Number of As" />
 				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nB} title="Number of Bs" />
 				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nC} title="Number of Cs" />
 				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nD} title="Number of Ds" />
+
+				{[...Array(5)].map((e, k) => {
+					const start = (k * 20) + 1;
+					const end = start + 19;
+					const filter = q => (q.number >= start) && (q.number <= end);
+					const title = `Answer distribution for Q${start} to Q${end}`;
+
+					return (
+						<div key={k}>
+							<AbcdGraph app={app} getLabel={y => y.year} filter={filter} title={title} max={70} />
+						</div>
+					);
+				})}
+
 			</section>
 
 			<div className="h-20"></div>
