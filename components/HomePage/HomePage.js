@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import Header from '../Header';
+import AbcdGraph from './AbcdGraph';
 import TenYearBarGraph from './TenYearBarGraph';
 
 
@@ -38,6 +39,8 @@ export default function HomePage ({appdata}) {
 			<Header page={app.asYear} />
 
 			<section className="max-w-3xl mx-auto">
+				<AbcdGraph {...abcdProps}  getData={(y) => y.nA} title="ABCD over the years" />
+
 				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nA} title="Number of As" />
 				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nB} title="Number of Bs" />
 				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nC} title="Number of Cs" />
