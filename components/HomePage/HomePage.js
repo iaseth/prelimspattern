@@ -30,12 +30,12 @@ export default function HomePage ({appdata}) {
 				<AbcdGraph app={app} getLabel={y => y.year} getData={(y) => y.nA} title="ABCD over the years" />
 
 				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nSimple} title="Number of Simple Questions" max={70} />
-				<AbcdGraph app={app} getLabel={y => y.year} filter={q => q.simple} title="Answer distribution for Simple Questions (%)" />
+				<AbcdGraph app={app} getLabel={y => y.year} filter={q => q.simple} title="Answer distribution for Simple Questions (%)" max={50} />
 
 				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nS} title="Number of Questions with Statements" max={70} />
-				<AbcdGraph app={app} getLabel={y => y.year} filter={q => q.statements} title="Answer distribution for Questions with Statements (%)" />
+				<AbcdGraph app={app} getLabel={y => y.year} filter={q => q.statements} title="Answer distribution for Questions with Statements (%)" max={50} />
 
-				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nM} title="Matchings" />
+				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nM} title="Matchings" max={20} />
 				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nA} title="Number of As" />
 				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nB} title="Number of Bs" />
 				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nC} title="Number of Cs" />

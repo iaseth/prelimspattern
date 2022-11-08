@@ -21,6 +21,10 @@ section {
 	@apply overflow-hidden;
 }
 
+canvas {
+	@apply shadow;
+}
+
 table {
 	@apply w-full bg-white shadow font-bold text-sm;
 }
