@@ -38,34 +38,23 @@ export default function HomePage ({appdata}) {
 
 			<Header page={app.asYear} />
 
-			<section className="max-w-3xl mx-auto">
-				<AbcdGraph {...abcdProps}  getData={(y) => y.nA} title="ABCD over the years" />
+			<section className="max-w-5xl mx-auto">
+				<AbcdGraph app={app} getLabel={y => y.year} getData={(y) => y.nA} title="ABCD over the years" />
 
+				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nSimple} title="Number of Simple Questions" max={70} />
+				<AbcdGraph app={app} getLabel={y => y.year} getData={(y) => y.nA} overall={true} filter={q => q.simple} title="Answer distribution for Simple Questions (%)" />
+
+				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nS} title="Number of Questions with Statements" max={70} />
+				<AbcdGraph app={app} getLabel={y => y.year} getData={(y) => y.nA} overall={true} filter={q => q.statements} title="Answer distribution for Questions with Statements (%)" />
+
+				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nM} title="Matchings" />
 				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nA} title="Number of As" />
 				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nB} title="Number of Bs" />
 				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nC} title="Number of Cs" />
 				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nD} title="Number of Ds" />
-				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nS} title="Questions with Statements" />
-				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nM} title="Matchings" />
-				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nSimple} title="Simple Questions" />
 			</section>
 
-			<section className="max-w-xl mx-auto">
-				<div className="py-6">
-					<table>
-						<thead>
-							<tr>
-								<td>Year</td>
-								<td>A</td>
-								<td>B</td>
-								<td>C</td>
-								<td>D</td>
-							</tr>
-						</thead>
-						<tbody>{elevenRows}</tbody>
-					</table>
-				</div>
-			</section>
+			<div className="h-20"></div>
 		</div>
 	);
 }

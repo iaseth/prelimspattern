@@ -5,28 +5,39 @@ import Chart from 'chart.js/auto';
 
 
 export default function AbcdGraph ({
-	app, title="AbcdGraph", min=0, max=100,
+	app, title="AbcdGraph", min=0, max=40,
+	overall=false,
+	filter = () => true,
 	getLabel, getData
 }) {
 
 	const canvasElement = React.useRef();
 
-	const years = [...app.years].reverse();
+	let years = [...app.years].reverse();
+	if (overall) {
+		years = [...years, app.overall];
+	}
 
 	const COLORS = {
-		A: '#d12931',
-		B: '#21d921',
-		C: '#4169e1',
-		D: '#d1d921',
+		A: '#ee0000',
+		B: '#00ee00',
+		C: '#0000ee',
+		D: '#eeee00',
 	};
+
+	const getYearData = (year, option) => {
+		const questions = year.questions.filter(q => filter(q));
+		const q2 = questions.filter(q => q.answer === option);
+		return Math.round(q2.length * 100 / questions.length);
+	}
 
 	const getDataset = (option) => {
 		return {
 			label: option.toUpperCase(),
-			backgroundColor: COLORS[option] + "a0",
+			backgroundColor: COLORS[option] + "90",
 			borderColor: COLORS[option],
 			borderWidth: 2,
-			data: years.map(y => y.questions.filter(q => q.answer === option).length),
+			data: years.map(y => getYearData(y, option)),
 		};
 	};
 

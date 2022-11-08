@@ -8,6 +8,7 @@ export default class Question {
 		this.answer = this.meta.answer.toUpperCase();
 		this.statements = this.meta.statements;
 		this.matching = this.meta.matching;
+		this.simple = (this.statements || this.matching) ? false : true;
 	}
 
 	getBgClass () {
