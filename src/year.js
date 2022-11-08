@@ -25,6 +25,7 @@ export default class Year {
 		this.x = this.questions.filter(q => q.answer === 'X');
 		this.statements = this.questions.filter(q => q.statements);
 		this.matching = this.questions.filter(q => q.matching);
+		this.simple = this.questions.filter(q => (!q.matching) && (!q.statements));
 	}
 
 	get nA () { return this.a.length; }
@@ -35,4 +36,5 @@ export default class Year {
 
 	get nS () { return this.statements.length; }
 	get nM () { return this.matching.length; }
+	get nSimple () { return this.simple.length; }
 }

@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import Header from '../Header';
+import TenYearBarGraph from './TenYearBarGraph';
 
 
 
@@ -30,6 +31,16 @@ export default function HomePage ({appdata}) {
 			</Head>
 
 			<Header page={app.asYear} />
+
+			<section className="max-w-xl mx-auto">
+				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nA} title="Number of As" />
+				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nB} title="Number of Bs" />
+				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nC} title="Number of Cs" />
+				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nD} title="Number of Ds" />
+				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nS} title="Questions with Statements" />
+				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nM} title="Matchings" />
+				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nSimple} title="Simple Questions" />
+			</section>
 
 			<section className="max-w-xl mx-auto">
 				<div className="py-6">
