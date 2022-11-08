@@ -17,6 +17,10 @@ h4 { @apply text-base; }
 h5 { @apply text-sm; }
 h6 { @apply text-xs; }
 
+section {
+	@apply overflow-hidden;
+}
+
 table {
 	@apply w-full bg-white shadow font-bold text-sm;
 }

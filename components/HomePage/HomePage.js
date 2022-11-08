@@ -16,11 +16,16 @@ export default function HomePage ({appdata}) {
 				<td>{e.nB}</td>
 				<td>{e.nC}</td>
 				<td>{e.nD}</td>
-				<td>{e.nS}</td>
-				<td>{e.nM}</td>
 			</tr>
 		);
 	});
+
+	const abcdProps = {
+		app: app,
+		getLabel: y => y.year,
+		min: 15,
+		max: 40
+	};
 
 	return (
 		<div>
@@ -32,11 +37,11 @@ export default function HomePage ({appdata}) {
 
 			<Header page={app.asYear} />
 
-			<section className="max-w-xl mx-auto">
-				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nA} title="Number of As" />
-				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nB} title="Number of Bs" />
-				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nC} title="Number of Cs" />
-				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nD} title="Number of Ds" />
+			<section className="max-w-3xl mx-auto">
+				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nA} title="Number of As" />
+				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nB} title="Number of Bs" />
+				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nC} title="Number of Cs" />
+				<TenYearBarGraph {...abcdProps}  getData={(y) => y.nD} title="Number of Ds" />
 				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nS} title="Questions with Statements" />
 				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nM} title="Matchings" />
 				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nSimple} title="Simple Questions" />
@@ -52,8 +57,6 @@ export default function HomePage ({appdata}) {
 								<td>B</td>
 								<td>C</td>
 								<td>D</td>
-								<td>Statements</td>
-								<td>Matching</td>
 							</tr>
 						</thead>
 						<tbody>{elevenRows}</tbody>

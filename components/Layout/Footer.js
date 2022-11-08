@@ -9,14 +9,14 @@ function FooterLink ({text, href}) {
 export default function Footer ({appdata}) {
 	const yearItems = appdata.app.years.map((y, k) => {
 		return (
-			<Link key={k} className="block bg-slate-700 px-4 py-6 rounded shadow" href={y.href}>
+			<Link key={k} className="block bg-slate-100 text-blue-700 px-3 py-4 rounded shadow" href={y.href}>
 				<h4>{y.year}</h4>
 			</Link>
 		);
 	});
 
 	return (
-		<footer className="bg-slate-800 text-white border-t-4 border-blue-600">
+		<footer className="bg-slate-200 border-t-4 border-blue-600">
 			<div className="px-2 py-20 text-center">
 				<div className="max-w-3xl mx-auto px-4 grid gap-4 grid-cols-2 md:grid-cols-4">
 					{yearItems}
@@ -24,7 +24,7 @@ export default function Footer ({appdata}) {
 			</div>
 
 			<div>
-				<div className="py-24 bg-slate-900 text-center">
+				<div className="py-24 bg-slate-900 text-white text-center">
 					<h4>Created by <FooterLink text="Ankur Seth" href="https://github.com/iaseth" />.</h4>
 					<div className="h-4"></div>
 					<h4>View <FooterLink text="Source" href="https://github.com/iaseth/prelimspattern" />.</h4>
