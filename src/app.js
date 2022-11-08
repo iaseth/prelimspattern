@@ -12,10 +12,10 @@ export default class App {
 			this.questions = this.questions.concat(y.questions);
 		});
 
-		this.asYear = new Year(this, {year: 'total', answers: []});
-		this.asYear.questions = this.questions;
+		this.overall = new Year(this, {year: 'total', answers: []});
+		this.overall.questions = this.questions;
 
-		this.eleven = [...this.years, this.asYear];
+		this.eleven = [...this.years, this.overall];
 		this.eleven.forEach(e => e.process());
 	}
 }

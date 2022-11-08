@@ -2,9 +2,12 @@
 
 
 export default class Question {
-	constructor (year, answer) {
+	constructor (year, meta) {
 		this.year = year;
-		this.answer = answer.toUpperCase();
+		this.meta = meta;
+		this.answer = this.meta.answer.toUpperCase();
+		this.statements = this.meta.statements;
+		this.matching = this.meta.matching;
 	}
 
 	getBgClass () {
