@@ -6,7 +6,7 @@ import YearSummary from '../YearSummary';
 
 
 export default function YearPage ({appdata, year}) {
-	const title = `${year.year}`;
+	const title = `Prelims Pattern for ${year.year}`;
 
 	return (
 		<div>

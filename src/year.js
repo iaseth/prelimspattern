@@ -22,5 +22,17 @@ export default class Year {
 		this.b = this.questions.filter(q => q.answer === 'B');
 		this.c = this.questions.filter(q => q.answer === 'C');
 		this.d = this.questions.filter(q => q.answer === 'D');
+		this.x = this.questions.filter(q => q.answer === 'X');
+		this.statements = this.questions.filter(q => q.statements);
+		this.matching = this.questions.filter(q => q.matching);
 	}
+
+	get nA () { return this.a.length; }
+	get nB () { return this.b.length; }
+	get nC () { return this.c.length; }
+	get nD () { return this.d.length; }
+	get nX () { return this.x.length; }
+
+	get nS () { return this.statements.length; }
+	get nM () { return this.matching.length; }
 }
