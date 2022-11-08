@@ -26,7 +26,7 @@ export default function HomePage ({appdata}) {
 
 			<Header page={app.asYear} />
 
-			<section className="max-w-5xl mx-auto">
+			<section className="max-w-5xl bg-slate-100 mx-auto lg:px-4">
 				<AbcdGraph app={app} getLabel={y => y.year} getData={(y) => y.nA} title="ABCD over the years" />
 
 				<TenYearBarGraph app={app} getLabel={(y) => y.year} getData={(y) => y.nSimple} title="Number of Simple Questions" max={70} />
@@ -54,9 +54,8 @@ export default function HomePage ({appdata}) {
 					);
 				})}
 
+				<div className="h-20"></div>
 			</section>
-
-			<div className="h-20"></div>
 		</div>
 	);
 }

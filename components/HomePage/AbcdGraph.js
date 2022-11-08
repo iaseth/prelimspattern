@@ -70,7 +70,7 @@ export default function AbcdGraph ({
 	}, []);
 
 	return (
-		<div className="text-center py-8">
+		<div className="text-center py-12">
 			<h3 className="py-2">{title}</h3>
 			<div className="py-4">
 				<canvas ref={canvasElement} className="bg-white p-4"></canvas>
